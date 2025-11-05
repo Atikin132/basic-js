@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../lib');
+const { NotImplementedError } = require("../lib");
 
 /**
  * Given an array of domains, return the object with the appearances of the DNS.
@@ -22,11 +22,20 @@ const { NotImplementedError } = require('../lib');
  * }
  *
  */
-function getDNSStats(/* domains */) {
-  // Remove line below and write your code here
-  throw new NotImplementedError('Not implemented');
+function getDNSStats(domains) {
+  const resObj = {};
+  domains.forEach((x) => {
+    let str = "";
+    x.split(".")
+      .reverse()
+      .forEach((y) => {
+        str = `${str}.${y}`;
+        resObj[str] = (resObj[str] || 0) + 1;
+      });
+  });
+  return resObj;
 }
 
 module.exports = {
-  getDNSStats
+  getDNSStats,
 };
